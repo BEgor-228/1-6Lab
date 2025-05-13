@@ -1,7 +1,7 @@
-/vendor/
-/.env
-/composer.lock
-/src/tmp/
-/tmp/mpdf/ttfontdata/
-/tmp/mpdf/
-/tmp/
+vendor/
+.env
+composer.lock
+src/tmp/
+tmp/mpdf/ttfontdata/
+tmp/mpdf/
+tmp/
