@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица продаж</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Таблица продаж</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Цена</th>
+                <th>Цвет</th>
+                <th>Имя клиента</th>
+                <th>Телефон клиента</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale.car_brand }}</td>
+                <td>{{ sale.car_model }}</td>
+                <td>{{ sale.car_price }}</td>
+                <td>{{ sale.car_color }}</td>
+                <td>{{ sale.client_name }}</td>
+                <td>{{ sale.client_phone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .profile-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .profile-container h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .profile-container p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .profile-container a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .profile-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Личный кабинет</h1>
+        <p><strong>Роль:</strong> {{ user.role }}</p>
+        <p><strong>Логин:</strong> {{ user.username }}</p>
+        <p><strong>Почта:</strong> {{ user.email }}</p>
+        <p><strong>Телефон:</strong> {{ user.phone }}</p>
+        <form action="/my-orders" method="GET">
+            <input type="submit" value="Посмотреть мои заказы">
+        </form>
+
+        {% if user.role == 'Admin' %}
+        <form action="/download-report/pdf" method="GET">
+            <input type="submit" value="Скачать отчет PDF">
+        </form>
+        <form action="/download-report/excel" method="GET">
+            <input type="submit" value="Скачать отчет Excel">
+        </form>
+        <form action="/download-report/csv" method="GET">
+            <input type="submit" value="Скачать отчет CSV">
+        </form>
+        {% endif %}
+        <form action="/logout" method="GET">
+            <input type="submit" value="Выйти">
+        </form>
+        <a href="/">Перейти к домашней странице</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сообщения</title>
+</head>
+<body>
+    {% if errors %}
+        <h2>Ошибки:</h2>
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        <p><a href="/">Вернуться к форме</a></p>
+    {% endif %}
+
+    {% if success %}
+        <h2>{{ success }}</h2>
+        <p><a href="/">Вернуться к форме</a></p>
+        <p><a href="/table">Посмотреть таблицу заказов</a></p>
+    {% endif %}
+</body>
+</html>
