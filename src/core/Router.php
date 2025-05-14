@@ -7,8 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 class Router{
     private $routes = [];
 
-    public function addRoute(string $method, string $path, callable $handler)
-    {
+    public function addRoute(string $method, string $path, callable $handler){
         $this->routes[] = [
             'method' => $method,
             'path' => $path,
@@ -16,17 +15,14 @@ class Router{
         ];
     }
 
-    public function handle(Request $request): Response
-    {
-        $path = $request->getPathInfo(); // Получаем путь из запроса
-        $method = $request->getMethod(); // Получаем метод запроса (GET, POST и т.д.)
-
+    public function handle(Request $request): Response{
+        $path = $request->getPathInfo();
+        $method = $request->getMethod();
         foreach ($this->routes as $route) {
             if ($route['method'] === $method && $route['path'] === $path) {
-                return $route['handler']($request); // Вызов обработчика маршрута
+                return $route['handler']($request);
             }
         }
-
         return new Response('Not Found', Response::HTTP_NOT_FOUND);
     }
 }

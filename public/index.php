@@ -23,7 +23,6 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-// Инициализация базы данных
 $pdo = new PDO(
     sprintf("pgsql:host=%s;dbname=%s", $_ENV['DB_HOST'], $_ENV['DB_NAME']),
     $_ENV['DB_USER'],
@@ -31,7 +30,6 @@ $pdo = new PDO(
 );
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Инициализация компонентов
 $request = Request::createFromGlobals();
 $view = new View();
 $carModel = new CarModel($pdo);
@@ -51,7 +49,6 @@ $functionsController = new FunctionsController($view, $carSalesModel);
 $reportController = new ReportController($appointmentModel);
 
 
-// Роутинг
 $router = new App\Core\Router();
 $router->addRoute('GET', '/', function() use ($homeController) {
     return new \Symfony\Component\HttpFoundation\Response($homeController->index());
@@ -97,6 +94,5 @@ $router->addRoute('GET', '/download-report/csv', function() use ($reportControll
 });
 
 
-// Обработка запроса
 $response = $router->handle($request);
 $response->send();

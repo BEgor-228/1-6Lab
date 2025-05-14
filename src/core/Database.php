@@ -4,12 +4,10 @@ namespace App\Core;
 use PDO;
 use PDOException;
 
-class Database
-{
+class Database{
     protected $pdo;
 
-    public function __construct(array $config)
-    {
+    public function __construct(array $config){
         try {
             $this->pdo = new \PDO(
                 "pgsql:host={$config['host']};dbname={$config['dbname']}", 
@@ -22,13 +20,10 @@ class Database
         }
     }
 
-    public function getPdo(): \PDO
-    {
+    public function getPdo(): \PDO{
         return $this->pdo;
     }
-
-    public function getConnection(): \PDO
-    {
+    public function getConnection(): \PDO{
         return $this->pdo;
     }
 }
