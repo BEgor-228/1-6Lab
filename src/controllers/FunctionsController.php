@@ -28,8 +28,5 @@ class FunctionsController {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             return new Response('Доступ запрещен.', Response::HTTP_FORBIDDEN);
         }
-
-        // Пока что ничего не делаем
-        return new Response("Скачивание отчета в формате $format пока не реализовано.");
     }
 }
